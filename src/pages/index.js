@@ -1,5 +1,5 @@
 import * as React from "react"
-import { graphql, Link } from "gatsby"
+import { graphql } from "gatsby"
 import { StaticImage } from "gatsby-plugin-image"
 
 import Layout from "../components/layout"
@@ -13,22 +13,23 @@ const IndexPage = ({
   console.log("data : ", siteMetadata)
   return (
     <Layout>
-      <SEO title="Home" />
-      <h1>Hi people</h1>
+      <SEO title="Min | Home" />
+      <h2>Hello everyone !</h2>
       <p>{siteMetadata.description}</p>
-      <p>{siteMetadata?.author}</p>
-      <StaticImage
-        src="../images/gatsby-astronaut.png"
-        width={300}
-        quality={95}
-        formats={["AUTO", "WEBP", "AVIF"]}
-        alt="A Gatsby astronaut"
-        style={{ marginBottom: `1.45rem` }}
-      />
       <p>
-        <Link to="/page-2/">Go to page 2</Link> <br />
-        <Link to="/using-typescript/">Go to "Using TypeScript"</Link>
+        <a href="https://github.com/minnyww" style={{ textDecoration: "none" }}>
+          go to my github
+        </a>
       </p>
+      <StaticImage
+        src="https://obs.line-scdn.net/0hqik8uAbuLkZWQQaHkDBREWwXLSllLT1FMnd_RQovcHIvIW5COSRmKHURd3QucmkYOHdmKHZJNXcoJWpHaSdm/w1200"
+        width={500}
+        quality={100}
+        formats={["AUTO", "WEBP", "AVIF"]}
+        alt="vonder seed round"
+        style={{ marginBottom: `1.45rem` }}
+        placeholder="blurred"
+      />
     </Layout>
   )
 }
@@ -36,7 +37,7 @@ const IndexPage = ({
 export default IndexPage
 
 export const query = graphql`
-  {
+  query {
     site {
       buildTime(formatString: "YYYY-MM-DD hh:mm a z")
       siteMetadata {

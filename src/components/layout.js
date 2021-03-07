@@ -8,6 +8,7 @@
 import * as React from "react"
 import PropTypes from "prop-types"
 import { useStaticQuery, graphql } from "gatsby"
+// import { ThemeProvider } from "emotion-theming"
 
 import Header from "./header"
 import "./layout.css"
@@ -24,6 +25,7 @@ const Layout = React.memo(({ children }) => {
   `)
 
   return (
+    // <ThemeProvider theme={theme}>
     <>
       <Header siteTitle={data.site.siteMetadata?.title || `Title`} />
       <div
@@ -36,6 +38,7 @@ const Layout = React.memo(({ children }) => {
         <main>{children}</main>
       </div>
     </>
+    // </ThemeProvider>
   )
 })
 
