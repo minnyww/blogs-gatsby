@@ -11,29 +11,25 @@ const Blog = ({ data }) => {
   return (
     <Layout>
       <SEO title="My blog posts" />
-
-      {posts.map(post => (
-        <Link
-          to={post.fields.slug}
-          key={post.id}
-          style={{ textDecoration: "none" }}
-        >
-          <div
-            style={{
-              border: "1px solid lightgray",
-              margin: "1rem",
-              padding: "1rem",
-              borderRadius: "12px",
-            }}
-          >
-            <h3 style={{ color: "#333131" }}>{post.frontmatter.title}</h3>
-            <p style={{ color: "#333131" }}>{post.excerpt}</p>
-            <small>
-              by : {post.frontmatter.author}, {post.frontmatter.date}
-            </small>
-          </div>
-        </Link>
-      ))}
+      <div class="pt-15">
+        <div class="grid gap-6 mb-8 md:grid-cols-2">
+          {posts.map(post => (
+            <Link
+              to={post.fields.slug}
+              key={post.id}
+              style={{ textDecoration: "none" }}
+            >
+              <div class="min-w-0 p-4 text-white bg-indigo-800 rounded-lg shadow-xs">
+                <h4 class="mb-4 font-semibold">{post.frontmatter.title}</h4>
+                <p>{post.excerpt}</p>
+                <small>
+                  by : {post.frontmatter.author}, {post.frontmatter.date}
+                </small>
+              </div>
+            </Link>
+          ))}
+        </div>
+      </div>
     </Layout>
   )
 }

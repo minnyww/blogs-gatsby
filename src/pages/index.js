@@ -10,11 +10,9 @@ const IndexPage = ({
     site: { siteMetadata },
   },
 }) => {
-  console.log("data : ", siteMetadata)
   return (
     <Layout>
       <SEO title="Min | Home" />
-      <h2>Hello everyone !</h2>
       <p>{siteMetadata.description}</p>
       <p>
         <a href="https://github.com/minnyww" style={{ textDecoration: "none" }}>
