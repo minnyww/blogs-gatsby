@@ -8,11 +8,31 @@ date: 2021-03-08
 
 ในการเขียน React บางครั้งก็มี logic ที่ถูกใช้บ่อยๆ และถูกใช้ซ้ำอยู่เยอะ วันนี้จะมาสร้าง Custom hook เพื่อ reuse logic กัน
 
-![alt text](https://image.freepik.com/free-vector/international-women-s-day-8-march-with-frame-flower-leaves-paper-art-style_60545-859.jpg)
+### วันนี้จะมาสร้าง custom hook สำหรับการ เพิ่ม ลบ ของเลขกัน
 
-```json
-  this is code block
+```js
+// useCounter.js
 
-  ## <-- this is headline
-  ### <-- this is subheadline
+const useCounter = () => {
+  const [counter, setCounter] = useState(0)
+
+  const increment = () => setCounter(counter => counter + 1)
+  const decrement = () => setCounter(counter => counter - 1)
+
+  return { counter, increment, decrement }
+}
+
+export default useCounter
+```
+
+### ส่วนวิธีใช้ก็ import ไปใช้ได้เลย
+
+```js
+// App.js
+
+const { counter, increment, decrement } = useCounter()
+
+// counter คือค่า result
+// increment คือ function ที่เมื่อกดแล้วจะเพิ่ม counter ทีละ 1
+// decrement คือ function ที่เมื่อกดแล้วจะลด counter ทีละ 1
 ```

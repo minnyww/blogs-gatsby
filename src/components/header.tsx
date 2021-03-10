@@ -22,17 +22,17 @@ const Header = ({ siteTitle }: HeaderProps) => {
           justifyContent: "space-between",
         }}
       >
-        <h1 class="text-2xl font-bold leading-7 text-gray-900 sm:text-3xl sm:truncate">
+        <h1 className="text-3xl font-bold leading-7 text-gray-900 sm:text-3xl sm:truncate">
           <Link to="/" style={MenuStyle}>
             {siteTitle}
           </Link>
         </h1>
 
-        <h1 class="text-2xl font-bold leading-7 text-gray-900 sm:text-3xl sm:truncate">
+        {/* <h1 className="text-2xl font-bold leading-7 text-gray-900 sm:text-3xl sm:truncate">
           <Link to="/blog" style={MenuStyle}>
             My blogs
           </Link>
-        </h1>
+        </h1> */}
       </div>
     </header>
   )

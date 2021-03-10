@@ -1,6 +1,6 @@
 import * as React from "react"
-import { graphql } from "gatsby"
-import { StaticImage } from "gatsby-plugin-image"
+import { graphql, Link } from "gatsby"
+// import { StaticImage } from "gatsby-plugin-image"
 
 import Layout from "../components/layout"
 import SEO from "../components/seo"
@@ -8,12 +8,14 @@ import SEO from "../components/seo"
 const IndexPage = ({
   data: {
     site: { siteMetadata },
+    blog: { posts },
   },
 }) => {
+  console.log("posts :", posts)
   return (
     <Layout>
       <SEO title="Min | Home" />
-      <p>{siteMetadata.description}</p>
+      {/* <p>{siteMetadata.description}</p>
       <p>
         <a href="https://github.com/minnyww" style={{ textDecoration: "none" }}>
           go to my github
@@ -27,7 +29,28 @@ const IndexPage = ({
         alt="vonder seed round"
         style={{ marginBottom: `1.45rem` }}
         placeholder="blurred"
-      />
+      /> */}
+      <div className="pt-15">
+        <div className="grid gap-6 mb-8 md:grid-cols-2">
+          {posts.map(post => (
+            <Link
+              to={post.fields.slug}
+              key={post.id}
+              style={{ textDecoration: "none" }}
+            >
+              <div className="min-w-0 p-4  bg-white-600 rounded-lg shadow shadow-xs">
+                <h4 className="mb-4 font-semibold text-indigo-600">
+                  {post.frontmatter.title}
+                </h4>
+                <p>{post.excerpt}</p>
+                <small>
+                  by : {post.frontmatter.author}, {post.frontmatter.date}
+                </small>
+              </div>
+            </Link>
+          ))}
+        </div>
+      </div>
     </Layout>
   )
 }
@@ -42,6 +65,20 @@ export const query = graphql`
         title
         description
         author
+      }
+    }
+    blog: allMarkdownRemark {
+      posts: nodes {
+        fields {
+          slug
+        }
+        frontmatter {
+          date(fromNow: true)
+          title
+          author
+        }
+        excerpt
+        id
       }
     }
   }

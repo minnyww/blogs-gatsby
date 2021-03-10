@@ -11,16 +11,16 @@ const Blog = ({ data }) => {
   return (
     <Layout>
       <SEO title="My blog posts" />
-      <div class="pt-15">
-        <div class="grid gap-6 mb-8 md:grid-cols-2">
+      <div className="pt-15">
+        <div className="grid gap-6 mb-8 md:grid-cols-2">
           {posts.map(post => (
             <Link
               to={post.fields.slug}
               key={post.id}
               style={{ textDecoration: "none" }}
             >
-              <div class="min-w-0 p-4 text-white bg-indigo-800 rounded-lg shadow-xs">
-                <h4 class="mb-4 font-semibold">{post.frontmatter.title}</h4>
+              <div className="min-w-0 p-4 text-white bg-indigo-600 rounded-lg shadow-xs">
+                <h4 className="mb-4 font-semibold">{post.frontmatter.title}</h4>
                 <p>{post.excerpt}</p>
                 <small>
                   by : {post.frontmatter.author}, {post.frontmatter.date}
